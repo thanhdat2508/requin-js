@@ -1,10 +1,17 @@
 {
   "name": "@requin/auth-js",
   "version": "0.0.1",
-  "description": "",
+  "description": "Native authentication client for Requinbase projects",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
@@ -22,13 +29,14 @@
     "javascript",
     "typescript",
     "requin",
-    "requinJS"
+    "requinJS",
+    "auth"
   ],
   "devDependencies": {
     "tsup": "^8.5.1",
     "typescript": "5.8.3"
   },
   "author": "RequinJS",
-  "license": "ISC",
+  "license": "MIT",
   "packageManager": "pnpm@10.33.0"
 }

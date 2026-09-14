@@ -1,10 +1,17 @@
 {
   "name": "@requin/requin-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Isomorphic JavaScript/TypeScript client library for Requinbase projects",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": "https://github.com/thanhdat2508/requin-js/issues",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
@@ -23,7 +30,10 @@
     "javascript",
     "typescript",
     "requin",
-    "requinJS"
+    "requinJS",
+    "database",
+    "postgrest",
+    "auth"
   ],
   "dependencies": {
     "@requin/auth-js": "workspace:*",
@@ -34,6 +44,6 @@
     "typescript": "5.8.3"
   },
   "author": "RequinJS",
-  "license": "ISC",
+  "license": "MIT",
   "packageManager": "pnpm@10.33.0"
 }
