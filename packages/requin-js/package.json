@@ -1,0 +1,39 @@
+{
+  "name": "@requin/requin-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bugs": "https://github.com/thanhdat2508/requin-js/issues",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "clean": "rm -rf dist",
+    "test": "vitest run"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "requin",
+    "requinJS"
+  ],
+  "dependencies": {
+    "@requin/auth-js": "workspace:*",
+    "@supabase/postgrest-js": "^2.116.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "5.8.3"
+  },
+  "author": "RequinJS",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.0"
+}

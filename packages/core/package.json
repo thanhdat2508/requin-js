@@ -30,7 +30,7 @@
   "engines": {
     "node": ">=22"
   },
-  "author": "ThanhDat",
+  "author": "RequinJS",
   "license": "ISC",
   "packageManager": "pnpm@10.33.0"
 }
