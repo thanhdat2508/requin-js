@@ -1,0 +1,17 @@
+{
+  "name": "auth-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsx index.ts",
+    "dev": "tsx watch index.ts"
+  },
+  "dependencies": {
+    "@requin/auth-js": "workspace:*",
+    "@requin/requin-js": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "5.8.3"
+  }
+}

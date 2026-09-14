@@ -18,20 +18,29 @@ importers:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))
 
-  examples/local-agent:
+  examples/auth-demo:
     dependencies:
-      '@requin/sdk':
+      '@requin/auth-js':
         specifier: workspace:*
-        version: link:../../packages/sdk
-      zod:
-        specifier: ^3.22.0
-        version: 3.25.76
+        version: link:../../packages/auth-js
+      '@requin/requin-js':
+        specifier: workspace:*
+        version: link:../../packages/requin-js
     devDependencies:
       tsx:
-        specifier: ^4.7.0
+        specifier: ^4.19.2
         version: 4.23.12
       typescript:
-        specifier: ^5.4.0
+        specifier: 5.8.3
+        version: 5.8.3
+
+  packages/auth-js:
+    devDependencies:
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(postcss@8.5.26)(tsx@4.23.12)(typescript@5.8.3)
+      typescript:
+        specifier: 5.8.3
         version: 5.8.3
 
   packages/core:
@@ -48,7 +57,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: ^4.1.10
-        version: 4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12))
+        version: 4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))
 
   packages/mcp:
     dependencies:
@@ -84,27 +93,21 @@ importers:
         specifier: 5.8.3
         version: 5.8.3
 
-  packages/sdk:
+  packages/requin-js:
     dependencies:
-      '@requin/core':
+      '@requin/auth-js':
         specifier: workspace:*
-        version: link:../core
-      '@requin/mcp':
-        specifier: workspace:*
-        version: link:../mcp
+        version: link:../auth-js
+      '@supabase/postgrest-js':
+        specifier: ^2.116.0
+        version: 2.116.0
+    devDependencies:
       tsup:
         specifier: ^8.5.1
         version: 8.5.1(postcss@8.5.26)(tsx@4.23.12)(typescript@5.8.3)
-    devDependencies:
-      '@types/node':
-        specifier: ^26.2.0
-        version: 26.2.0
       typescript:
         specifier: 5.8.3
         version: 5.8.3
-      vitest:
-        specifier: ^4.1.10
-        version: 4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))
 
 packages:
 
@@ -700,6 +703,10 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
+
+  '@supabase/postgrest-js@2.116.0':
+    resolution: {integrity: sha512-kGpVZTDHxFTJS3tu+rU0iTAZ+4U0bcLVjxwCk8f3gRhjw3qdCZjTBlgYvc4kGH2XccmAzbkKwXL/mrNHMGSc+A==}
+    engines: {node: '>=22.0.0'}
 
   '@turbo/darwin-64@2.10.9':
     resolution: {integrity: sha512-Jh+pTGXLNz8+1tkUU13TI/f+ZOI+OvC4YbHi1H+57iSpLt5DR3xgptd+4sA07RdjdRR/RX/01uQQu2OkbzIefA==}
@@ -1524,6 +1531,9 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
+  tslib@2.8.1:
+    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
   tsup@8.5.1:
     resolution: {integrity: sha512-xtgkqwdhpKWr3tKPmCkvYmS9xnQK3m3XgxZHwSUjvfTjp7YfXe5tT3GgWi0F2N+ZSMsOeWeZFh7ZZFg5iPhing==}
     engines: {node: '>=18'}
@@ -2033,6 +2043,10 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
+  '@supabase/postgrest-js@2.116.0':
+    dependencies:
+      tslib: 2.8.1
+
   '@turbo/darwin-64@2.10.9':
     optional: true
 
@@ -2136,14 +2150,6 @@ snapshots:
       '@vitest/utils': 4.1.10
       chai: 6.2.2
       tinyrainbow: 3.1.1
-
-  '@vitest/mocker@4.1.10(vite@8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12))':
-    dependencies:
-      '@vitest/spy': 4.1.10
-      estree-walker: 3.0.3
-      magic-string: 0.30.21
-    optionalDependencies:
-      vite: 8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12)
 
   '@vitest/mocker@4.1.10(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))':
     dependencies:
@@ -2840,6 +2846,8 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
+  tslib@2.8.1: {}
+
   tsup@8.5.1(postcss@8.5.26)(tsx@4.23.12)(typescript@5.8.3):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.27.7)
@@ -2922,19 +2930,6 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12):
-    dependencies:
-      lightningcss: 1.33.0
-      picomatch: 4.0.5
-      postcss: 8.5.26
-      rolldown: 1.2.4
-      tinyglobby: 0.2.17
-    optionalDependencies:
-      '@types/node': 26.2.0
-      esbuild: 0.27.7
-      fsevents: 2.3.3
-      tsx: 4.23.12
-
   vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12):
     dependencies:
       lightningcss: 1.33.0
@@ -2947,33 +2942,6 @@ snapshots:
       esbuild: 0.28.2
       fsevents: 2.3.3
       tsx: 4.23.12
-
-  vitest@4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12)):
-    dependencies:
-      '@vitest/expect': 4.1.10
-      '@vitest/mocker': 4.1.10(vite@8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12))
-      '@vitest/pretty-format': 4.1.10
-      '@vitest/runner': 4.1.10
-      '@vitest/snapshot': 4.1.10
-      '@vitest/spy': 4.1.10
-      '@vitest/utils': 4.1.10
-      es-module-lexer: 2.3.1
-      expect-type: 1.4.0
-      magic-string: 0.30.21
-      obug: 2.1.4
-      pathe: 2.0.3
-      picomatch: 4.0.5
-      std-env: 4.2.0
-      tinybench: 2.9.0
-      tinyexec: 1.3.0
-      tinyglobby: 0.2.17
-      tinyrainbow: 3.1.1
-      vite: 8.2.1(@types/node@26.2.0)(esbuild@0.27.7)(tsx@4.23.12)
-      why-is-node-running: 2.3.0
-    optionalDependencies:
-      '@types/node': 26.2.0
-    transitivePeerDependencies:
-      - msw
 
   vitest@4.1.10(@types/node@26.2.0)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12)):
     dependencies:
